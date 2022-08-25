@@ -42,7 +42,10 @@ const DetailScreen = (props: DetailScreenProps) => {
   };
 
   return (
-    <SafeAreaView style={{backgroundColor: Colors.white,paddingTop:20}}>
+
+    <SafeAreaView style={{backgroundColor:"#e9eef0",paddingTop:20}}>
+
+
       <Padder horizontal={20}>
         <Box
           justifyCenter
@@ -54,7 +57,8 @@ const DetailScreen = (props: DetailScreenProps) => {
           <ScaledText color={Colors.white} size={20} bold>
             {surah ? surah.surah_name : ''}
           </ScaledText>
-          <ScaledText color={Colors.white} size={13}>
+
+          <ScaledText color={Colors.white} size={15}>
             {surah ? `${surah.surah_verse_count} VERSES` : ''}
           </ScaledText>
         </Box>
@@ -68,6 +72,7 @@ const DetailScreen = (props: DetailScreenProps) => {
         }}
         ListFooterComponent={<Gap vertical size={200} />}
       />
+      
     </SafeAreaView>
   );
 };
@@ -83,15 +88,17 @@ const VerseItem = (props: VerseItemProps) => {
         <Row>
           <Col>
             <Padder horizontal>
-              <Box borderRadius={10} fullWidth color={Colors.grey3} height={45}>
+              
                 <Row>
                   <Col size={3} justifyCenter>
                     <Padder horizontal>
-                      <Circle size={30} color={Colors.purple1}>
-                        <ScaledText color={Colors.white}>
+                      <Circle size={40} color={Colors.grey3}>
+                        <ScaledText color='black'>
+
                           {props.data.verse_number}
                         </ScaledText>
                       </Circle>
+                      
                     </Padder>
                   </Col>
                   <Col justifyCenter>
@@ -100,18 +107,20 @@ const VerseItem = (props: VerseItemProps) => {
                     </Row>
                   </Col>
                 </Row>
-              </Box>
+
             </Padder>
           </Col>
         </Row>
         <Row justifyEnd>
           <Padder all>
-            <ScaledText size={22}>{props.data.verse_arabic}</ScaledText>
+
+            <ScaledText size={22} >{props.data.verse_arabic}</ScaledText>
+
           </Padder>
         </Row>
-
+       
         <Gap vertical />
-        <Line />
+        <Line size={4}  />
         <Gap vertical />
       </Col>
     </Padder>

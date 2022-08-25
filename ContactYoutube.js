@@ -1,4 +1,4 @@
-import {View,Text ,StyleSheet, TextInput, TouchableOpacity, Alert,ScrollView} from "react-native";
+import {ImageBackground,View,Text ,StyleSheet, TextInput, TouchableOpacity, Alert,ScrollView} from "react-native";
 import React,{useState} from "react";
 import CheckBox from "expo-checkbox";
 import{
@@ -36,21 +36,21 @@ const ContactYoutube =({navigation})=> {
         return<AppLoading/>;
      }
     return(
+        <View>
+            <ImageBackground source={require("./assets/LoginBackground.jpg")} resizeMode="cover" style={styles.image}>
         <ScrollView style={styles.mainContainer}>
-            <Text style={styles.mainHeader}>Login Form</Text>
+            <Text style={styles.mainHeader}>LOGIN!</Text>
                 <Text style={styles.description}>Asalam-u-alaikum!</Text>
                 <Text style={styles.description}>Welcome to Tajweed App.....</Text>
             <View style={styles.inputcontainer}>
-                <Text style={styles.labels}>Enter Your Name</Text>
-                <TextInput style={styles.inputStyle} autoCapitalize="none" 
+                <TextInput style={styles.inputStyle} autoCapitalize="none" placeholder="Enter Your Name"
                 autoCorrect={false}
                 value={userName}
                 onChangeText={(actualData)=>setUserName(actualData)}></TextInput>
             </View>
-            <View>    
-                <Text style={styles.labels}>Enter Your Password</Text>
+            <View style={styles.inputcontainer}>    
                 <TextInput style={styles.inputStyle} autoCapitalize="none" autoCorrect={false} 
-                secureTextEntry={true}
+                secureTextEntry={true} placeholder="Enter Your Password"
                 value={password}
                 onChangeText={(actualData)=>setPassword(actualData)}></TextInput>
             </View>
@@ -58,19 +58,21 @@ const ContactYoutube =({navigation})=> {
                 <CheckBox 
                     value={agree}
                     onValueChange={()=> setAgree(!agree)}
-                    color={agree ? "#4630EB" : undefined}
+                    color={agree ? "#2c93b0" : undefined}
                     />     
                 <Text style={styles.wrapperText}>
                     I have read and agree with terms...
                 </Text>
                 <TouchableOpacity style={[styles.buttonStyle,
-                {backgroundColor : agree? "#4630EB":"grey",}, ]}
+                {backgroundColor : agree? "#2c93b0":"grey",}, ]}
                 disabled={!agree}
                 onPress={()=> submit()}>
                     <Text style={styles.buttonText}>LOGIN</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>   
+        </ImageBackground>
+        </View>
     );
 }
 const styles = StyleSheet.create({
@@ -78,22 +80,24 @@ const styles = StyleSheet.create({
         height: "100%",
         paddingHorizontal: 30,
         paddingTop:20,
-        backgroundColor:"#081B22",
+        //backgroundColor:"#e9eef0",
     },
+    
     mainHeader: {
-        color:"#3B8B7D",
         fontSize:45,
         paddingBottom: 10,
-        textTransform: "capitalize",
         fontFamily: "bold",
+        textAlign:"center",
+        color:'#fff',
     },
+    
     description: {
         fontSize:20,
-        color:"#7d7d7d",
+        color:"#fff",
         paddingBottom: 10,
         fontFamily: "regular",
     },
-    inputContainer : {
+    inputcontainer : { 
         marginTop :20,
     },
     labels: {
@@ -104,9 +108,8 @@ const styles = StyleSheet.create({
         fontFamily:"regular",
     },
     inputStyle:{
-        borderWidth:1,
-        borderColor: "rgba(0,0,0.3)",
-        backgroundColor:"#3B8B7D",
+        borderWidth:2,
+        backgroundColor:"#9ce4f7",
         paddingHorizontal: 15,
         paddingVertical: 7,
         borderRadius:10,
@@ -119,12 +122,11 @@ const styles = StyleSheet.create({
     wrapperText:{
         paddingTop:10,
         paddingBottom:20,
-        color:"#7d7d7d",
+        color:"#fff",
         fontFamily:"regular",
     },
     buttonStyle:{
-        borderWidth:1,
-        borderColor: "rgba(0,0,0.3)",
+        borderWidth:2,
         paddingHorizontal: 15,
         paddingVertical: 7,
         borderRadius:10,   
